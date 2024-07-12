@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: "12.5.1"  # Specify the Xcode version you need for iOS
+      xcode: 15.3  # Use a valid Xcode version
+    resource_class: macos.m1.medium  # Use a supported resource class
     steps:
       - checkout
       - run:
