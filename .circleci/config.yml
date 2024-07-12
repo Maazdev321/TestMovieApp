@@ -1,0 +1,36 @@
+version: 1.0
+
+jobs:
+  build:
+    macos:
+      xcode: "15.3"  # Specify the Xcode version you need for iOS
+    steps:
+      - checkout
+      - run:
+          name: Install Homebrew
+          command: |
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - run:
+          name: Install Node
+          command: brew install node
+      - run:
+          name: Install Yarn
+          command: npm install -g yarn
+      - run:
+          name: Install Watchman
+          command: brew install watchman
+      - run:
+          name: Install React Native CLI
+          command: npm install -g react-native-cli
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - run:
+          name: Run Tests
+          command: yarn test
+
+workflows:
+  version: 1
+  build_and_test:
+    jobs:
+      - build
