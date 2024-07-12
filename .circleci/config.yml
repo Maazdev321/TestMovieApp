@@ -1,9 +1,9 @@
-version: 1.0
+version: 2.1
 
 jobs:
   build:
     macos:
-      xcode: "15.3"  # Specify the Xcode version you need for iOS
+      xcode: "12.5.1"  # Specify the Xcode version you need for iOS
     steps:
       - checkout
       - run:
@@ -30,7 +30,6 @@ jobs:
           command: yarn test
 
 workflows:
-  version: 1
   build_and_test:
     jobs:
       - build
